@@ -1,4 +1,4 @@
-from UserProfile import UserProfile
+import UserProfile
 
 from datetime import datetime
 
@@ -22,13 +22,13 @@ def calculate_expected_salary(number_of_experience_years, user_information, numb
 
         new_expected_salary = 0
 
-        if number_of_education_years == 1:
+        if number_of_experience_years == 1:
             new_expected_salary = expected_salary - 5000  # Deduct $5K due to users 1 year of experience
-        elif number_of_education_years == 2:
+        elif number_of_experience_years == 2:
             new_expected_salary = expected_salary - 3000  # Deduct $3K due to users 2 years of experience
-        elif number_of_education_years == 3:
+        elif number_of_experience_years == 3:
             new_expected_salary = expected_salary + 1000  # Add $1K due to users 3 years of experience
-        elif number_of_education_years == 4:
+        elif number_of_experience_years == 4:
             new_expected_salary = expected_salary + 5000  # Add $5K due to users 4+ years of experience
         else:
             print(5 * "*" + " Sorry, please enter a choice between 1 - 4 " + 5 * "*")
@@ -95,7 +95,7 @@ while create_a_candidate:
                 }
 
         # Instatiation an Object aka Create a new instance of the Class
-        user_profile = UserProfile(dob, full_name, country, state, number_of_education_years, age)
+        user_profile = UserProfile.UserProfile(dob, full_name, country, state, number_of_education_years, age)
         # instead of user_profile, call for type of user: Designer or Developer
 
         user_password = user_profile.get_password() # this will be bad_password

@@ -40,35 +40,6 @@ from datetime import datetime
 """
 
 
-class Product:
-    def __init__(self):
-        self.price = 0.0
-        self.description = "some product"
-        self.quantity_in_stock = 0
-        self.brand = ""
-
-    def get_how_many_left_in_stock(self):
-        return self.quantity_in_stock
-
-
-class CreditCard:
-    def __init__(self, full_name, dob, address):
-        pass
-
-
-class CreditCard2:
-    def __init__(self, user_profile):
-        full_name = user_profile.full_name
-
-
-class Post:
-    def __init__(self, caption, image, user_profile, date_it_was_posted):
-        self.number_of_likes = 0
-
-    def update_likes(self):
-        self.number_of_likes = self.number_of_likes + 1
-
-
 class UserProfile:
     def __init__(self, dob, full_name, country, state, number_of_education_years, age):
         self.password = "bad_password"
@@ -86,18 +57,42 @@ class UserProfile:
     def get_age(self):
         return self.age
 
-    def set_password(self, new_password):
-        self.password = new_password
+    def set_age(self, new_age):
+        self.age = new_age
 
     def get_password(self):
         return self.password
+
+    def set_password(self, new_password):
+        self.password = new_password
 
     def create_unique_id(self):
         random_id = id(self.full_name)
         return random_id
 
     def get_name(self):
-        return self.name
+        return self.full_name
+
+    def set_name(self, new_name):
+        self.full_name = new_name
+
+    def get_dob(self):
+        return self.dob
+
+    def set_dob(self, new_dob):
+        self.dob = new_dob
+
+    def get_state(self):
+        return self.state
+
+    def set_state(self, new_state):
+        self.state = new_state
+
+    def get_country(self):
+        return self.country
+
+    def set_country(self, new_country):
+        self.country = new_country
 
 
 class Developer(UserProfile):

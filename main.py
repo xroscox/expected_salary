@@ -74,20 +74,25 @@ is_designer = False
 while create_a_candidate:
     try:
 
-        candidate_type = input("Please provide your profession: \n Type '1' if a Developer \n Type '2' if a Designer")
+        candidate_type = input("Please provide your profession: \n Type '1' if a Developer \n Type '2' if a Designer \n")
 
         if int(candidate_type) == 1:
             is_developer = True
-            is_desinger = False
+            is_designer = False
+            users_experience = input("How many years experience do you have developing software?\n[1] Less than 1 year"
+                                     " \n[2] 1 - 3 years of experience \n[3] 3 - 8 years of experience \n[4] "
+                                     "8+ years of experience \n")
+            number_of_education_years = input("Please enter number of years you have been coding: \n")
+
         elif int(candidate_type) == 2:
             is_developer = False
             is_designer = True
+            users_experience = input("How many years experience do you have designing?\n[1] Less than 1 year"
+                                     " \n[2] 1 - 3 years of experience \n[3] 3 - 8 years of experience \n[4] "
+                                     "8+ years of experience \n")
+            number_of_education_years = input("Please enter number of years you have been designing: \n")
         else:
             raise ValueError
-
-        users_experience = input("How many years experience do you have developing software?\n[1] Less than 1 year"
-                         " \n[2] 1 - 3 years of experience \n[3] 3 - 8 years of experience \n[4] "
-                         "8+ years of experience \n")
 
         users_experience = int(users_experience)
 
@@ -105,7 +110,7 @@ while create_a_candidate:
             if users_design_tools == '':
                 raise ValueError
 
-            users_design_tools = users_design_tools.spilt(",")
+            users_design_tools = users_design_tools.split(",")
 
         dob = input("Please enter your Date of Birth (MM/DD/YYYY): \n")
 
@@ -121,8 +126,6 @@ while create_a_candidate:
         state = input("Choose your State (use the two letter abbreviation): \n Choose one of the following:")
         if len(state) > 2:
             raise ValueError
-
-        number_of_education_years = input("Please enter number of years you have been coding: \n")
 
         is_active = True
 

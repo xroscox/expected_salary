@@ -54,8 +54,22 @@ def calculate_expected_salary(number_of_experience_years, user_information, numb
 
 
 create_a_candidate = True
+is_developer = False
+is_designer = False
+
 while create_a_candidate:
     try:
+
+        candidate_type = input("Please provide your profession: \n Type '1' if a Developer \n Type '2' if a Designer")
+
+        if int(candidate_type) == 1:
+            is_developer = True
+            is_desinger = False
+        elif int(candidate_type) == 2:
+            is_developer = False
+            is_designer = True
+        else:
+            raise ValueError
 
         users_experience = input("How many years experience do you have developing software?\n[1] Less than 1 year"
                          " \n[2] 1 - 3 years of experience \n[3] 3 - 8 years of experience \n[4] "
@@ -63,12 +77,21 @@ while create_a_candidate:
 
         users_experience = int(users_experience)
 
-        users_coding_languages = input("What languages do you know? (separate each language with a comma)")
+        if is_developer:
+            users_coding_languages = input("What languages do you know? (separate each language with a comma)")
 
-        if users_coding_languages == '':
-            raise ValueError
+            if users_coding_languages == '':
+                raise ValueError
 
-        users_coding_languages = users_coding_languages.split(",")
+            users_coding_languages = users_coding_languages.split(",")
+
+        else:
+            users_design_tools = input("What software design tools do you use? (separate each tool by a comma)")
+
+            if users_design_tools == '':
+                raise ValueError
+
+            users_design_tools = users_design_tools.spilt(",")
 
         dob = input("Please enter your Date of Birth (MM/DD/YYYY): \n")
 
@@ -93,6 +116,12 @@ while create_a_candidate:
                      "dob": dob, "full_name": full_name, "country": country, "state": state, "is_active": is_active,
                      "numbers_of_education_years": number_of_education_years, "age": int(age)
                 }
+
+        if is_developer:
+            user_profile =
+
+        elif is_designer:
+            pass
 
         # Instatiation an Object aka Create a new instance of the Class
         user_profile = UserProfile.UserProfile(dob, full_name, country, state, number_of_education_years, age)

@@ -66,6 +66,12 @@ class UserProfile:
     def set_password(self, new_password):
         self.password = new_password
 
+    def get_email(self):
+        return self.email
+
+    def set_email(self, new_email):
+        self.email = new_email
+
     def create_unique_id(self):
         random_id = id(self.full_name)
         return random_id
@@ -96,8 +102,25 @@ class UserProfile:
 
 
 class Developer(UserProfile):
-    pass
+    def __init__(self, dob, full_name, country, state, number_of_education_years, age, list_of_languages):
+        super().__init__(dob, full_name, country, state, number_of_education_years, age)
+        self.coding_languages = list_of_languages
+
+    def get_coding_languages(self):
+        return self.coding_languages
+
+    def set_coding_languages(self, new_coding_languages):
+        self.coding_languages = new_coding_languages
 
 
 class Designer(UserProfile):
-    pass
+    def __init__(self, dob, full_name, country, state, number_of_education_years, age, list_of_software_tools):
+        super().__init__(dob, full_name, country, state, number_of_education_years, age)
+        self.software_tools = list_of_software_tools
+
+    def get_software_tools(self):
+        return self.software_tools
+
+    def set_software_tools(self, new_software_tools):
+        self.software_tools = new_software_tools
+

@@ -1,4 +1,4 @@
-import UserProfile
+from Models import Designer, Developer
 
 from datetime import datetime
 
@@ -7,7 +7,7 @@ valid_states = ("FL", "NY", "CA", "TX", "NC")
 expected_salaries = {"NY": 70000, "CA": 70000, "FL": 50000, "NC": 50000, "TX": 60000}
 
 
-def calculate_expected_salary(number_of_experience_years, user_information, number_of_edu_years):
+def calculate_expected_salary(number_of_experience_years, user_information, number_of_edu_years, is_developer, is_designer):
     try:
 
         expected_salary = expected_salaries[user_information["state"].upper()]
@@ -33,13 +33,27 @@ def calculate_expected_salary(number_of_experience_years, user_information, numb
         else:
             print(5 * "*" + " Sorry, please enter a choice between 1 - 4 " + 5 * "*")
 
-        if len(users_coding_languages) < 3:
-            new_expected_salary = new_expected_salary - 10000  # 65,000 - 10,000 = 55,000
-            print("Learn some more languages; deduct $10K from the expected salary.")
-        elif len(users_coding_languages) > 3:
-            new_expected_salary = new_expected_salary + 10000
-        else:
-            new_expected_salary = new_expected_salary + 5000
+        if is_developer:
+            if len(users_coding_languages) < 3:
+                new_expected_salary = new_expected_salary - 10000  # 65,000 - 10,000 = 55,000
+                print("Learn some more languages; deduct $10K from the expected salary.")
+
+            elif len(users_coding_languages) > 3:
+                new_expected_salary = new_expected_salary + 10000
+
+            else:
+                new_expected_salary = new_expected_salary + 5000
+
+        if is_designer:
+            if len(users_design_tools) < 3:
+                new_expected_salary = new_expected_salary - 10000  # 65,000 - 10,000 = 55,000
+                print("Learn some more design tools; deduct $10K from the expected salary.")
+
+            elif len(users_design_tools) > 3:
+                new_expected_salary = new_expected_salary + 10000
+
+            else:
+                new_expected_salary = new_expected_salary + 5000
 
         if number_of_education_years > 3:
             new_expected_salary = new_expected_salary + 10000
@@ -118,13 +132,13 @@ while create_a_candidate:
                 }
 
         if is_developer:
-            user_profile =
+            user_profile = Developer(dob, full_name, country, state, number_of_education_years, age, users_coding_languages)
 
         elif is_designer:
-            pass
+            user_profile = Designer(dob, full_name, country, state, number_of_education_years, age, users_design_tools)
 
         # Instatiation an Object aka Create a new instance of the Class
-        user_profile = UserProfile.UserProfile(dob, full_name, country, state, number_of_education_years, age)
+        # user_profile = UserProfile(dob, full_name, country, state, number_of_education_years, age)
         # instead of user_profile, call for type of user: Designer or Developer
 
         user_password = user_profile.get_password() # this will be bad_password
@@ -141,7 +155,7 @@ while create_a_candidate:
         user_id = user_profile.create_unique_id()
         print("Your confirmation ID is", user_id)
 
-        calculate_expected_salary(users_experience, user_info, number_of_education_years)
+        calculate_expected_salary(users_experience, user_info, number_of_education_years, is_developer, is_designer)
 
         another_candidate = input("Would you like to create another candidate? Y/N \n")
 
